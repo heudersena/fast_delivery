@@ -1,0 +1,6 @@
+api/node_modules
+api/build
+api/yarn-error.log
+api/yarn.loc
+web/node_modules
+mobile/node_modules
