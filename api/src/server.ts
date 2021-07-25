@@ -1,12 +1,27 @@
-import express from "express";
+import "express-async-errors";
+import express, { Response, Request, NextFunction } from "express";
+
 import router from "./routes";
-import path from "path";
+const log = console.log;
+
 const app = express();
 
-app.set("port", 3000);
-
+app.use(express.json());
 app.use(router);
 
-app.listen(app.get("port"), "0.0.0.0", () =>
-  console.log(`http://localhot:${app.get("port")}`)
+app.use(
+  (err: Error, request: Request, response: Response, next: NextFunction) => {
+    if (err instanceof Error) {
+      return response.status(400).json({
+        error: err.message,
+      });
+    }
+
+    return response.status(500).json({
+      status: "error",
+      message: "Internal Server Error",
+    });
+  }
 );
+
+app.listen(3000, () => log("Server is running"));

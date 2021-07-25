@@ -9,8 +9,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-    // "baseUrl": "./"
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./src/@types"]
   },
   "include": ["src/**/*", "knexfile.ts"]
 }
